@@ -180,6 +180,14 @@ python3 main.py
 ```
 If there are any dependency issues related to SHAP or LIME not compatibile on local environment try using the .ipynb notebook instead. 
 ```
+## Tasks
+1.	Pick one multimodal dataset that includes both image & text content. For ex: Multimodal Sentiment - MVSA Single, (pass: mvsa-2023-uni-p), or choose another dataset where the task uses both image and text (both modalities are inputs) to predict. It doesn't apply to tasks where one modality is input and the other is output (e.g. text2image).
+2.	Extract various visual features (not embeddings) using pre-trained visual models (classifiers, captioning models, etc.). Example: tuples of feature names with probability (or some other score value) => "image includes a dog": 0.8, "kitchen is the scene": 0.6. In this way, each feature has a name and can be back-traced for the explanation.
+You can use any pre-trained model(s) of your choice. Some notable examples are CLIP, Recognize Anything Model, OWL-ViT
+3.	Extract textual features (not embeddings) using pre-trained textual models. Example: tuples of feature names with probability (or some other score value) => "text includes positive word: amazing": 0.8, "text mentions entity: Berlin": 0.6, "text has informal writing style": 0.9, ...
+You can use any pre-trained model(s) of your choice.
+4.	Implement a model architecture that uses XGBoost and integrates the extracted features to train a model.
+5.	Perform feature importance analysis and present the findings (with visualization of explanations), counterfactual examples etc. (as it was done in the other two projects)
 
 ## Reference
 
