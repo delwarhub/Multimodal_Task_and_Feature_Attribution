@@ -1,0 +1,46 @@
+PATH_TO_IMAGE_DIR: "./data/flickr30k_images/flickr30k_images/"
+PATH_TO_DATA_DIR: "./data/"
+PATH_TO_TRAINED_MODELS_DIR: "./trained_models"
+
+SOURCE_TEXT_COLUMN: "hypothesis"
+SOURCE_IMAGE_COLUMN: "Flickr30kID"
+TARGET_COLUMN: "gold_label"
+
+PATH_TO_COMMON_COLUMNS: "./data/sample_esnlive_common_columns.pkl"
+
+# topic-modeling
+TOPIC_MODEL_SAMPLE_DOCS: False # True or False
+TOPIC_MODEL_SAMPLE_SIZE: 0.1 # sample size (data.shape[0] * sample_size)
+PATH_TO_SAVED_SAMPLED_DOCS: "./data/sample_docs.pkl" # path to cached docs
+PATH_TO_SAMPLE_TRAIN_DATA: "./data/sample_esnlive_train.csv" # path to sample_esnlive_train data
+GENERATE_EMBEDDINGS: False # True or False
+TOPIC_MODEL_CHECKPOINT: "sentence-transformers/all-MiniLM-L6-v2"
+PATH_TO_SAVED_EMBEDDINGS: "./trained_models/sentence_transformers_all-MiniLM-L6-v2_embeddings.npy" # path to cached embeddings
+TRAIN_TOPIC_MODEL: False # True or False
+PATH_TO_SAVED_TOPIC_MODEL: "./trained_models/topic_model" # path to cached topic-model
+NUM_TOPICS: 20 # total topics to generate (for study)
+
+# zero-shot feature extraction 
+PATH_TO_TOPIC_ORIENTED_FEATURES: "./data/topic_oriented_features_1.pkl" # "./data/topic_oriented_features_1.pkl" or "./data/topic_oriented_features_2.pkl"
+PATH_TO_EMOTION_ORIENTED_FEATURES: "./data/emotion_oriented_features.pkl"
+
+# zero-shot text feature extraction
+TEXTUAL_FEATURES_TYPE: "topic_oriented" # "topic_oriented" or "emotion_oriented"
+SAMPLE_DATA_TEXT_FEATURES: False # True or False
+SAMPLE_SIZE_TEXT_FEATURES: 5 
+PATH_TO_TEXT_FEATURES_DIR: "./data/text_features/" # path to store extracted text-features
+FULL_PROCESS: True # apply GPU support for efficient computation
+
+# zero-shot image feature extraction
+IMAGE_FEATURES_TYPE: "topic_oriented" # "topic_oriented" or "emotion_oriented"
+SAMPLE_DATA_IMAGE_FEATURES: False # True or False
+SAMPLE_SIZE_IMAGE_FEATURES: 5
+PATH_TO_IMAGE_FEATURES_DIR: "./data/image_features/" # path to store extracted image-features
+PATH_TO_SAMPLE_ENTITIES: "./data/sample_esnlive_train_entity_w_counts.json" # legacy
+
+# main
+APPLY_TOPIC_MODELING: False # train topic-model and study feature 
+APPLY_TEXT_FEATURE_EXTRACTION: False # extract features from sampled text data 
+APPLY_IMAGE_FEATURE_EXTRACTION: False # extract feature from sampled image data
+TRAIN_XGBOOST: False # train XGBoost model
+INTERPRET_W_SHAP: True # get XAI plots
